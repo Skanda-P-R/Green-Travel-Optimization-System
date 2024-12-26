@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-start;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            background-image: url('/static/bg.jpg');
+            background-size: cover; 
+            background-repeat: no-repeat; 
+            background-position: center;
+        }
+        .container {
+            position: absolute;
+            top: 100px;
+            right: 200px;
+            text-align: right;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 8px;
+        }
+        .button {
+            backface-visibility: hidden;
+            position: relative;
+            cursor: pointer;
+            display: inline-block;
+            white-space: nowrap;
+            background: rgba(57, 122, 21, 0.973);
+            border-radius: 15px;
+            border: 3px solid rgba(4.058362800724419%,14.263104838709683%,0.1345575928180187%,0.637);
+            border-width: 3px 3px 3px 3px;
+            padding: 15px 15px 15px 15px;
+            color: #fff;
+            font-size: 20px;
+            font-family: Helvetica Neue;
+            font-weight: 900;
+            font-style: normal;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+        .button > div {
+            color: #ddd;
+            font-size: 12px;
+            font-family: Helvetica Neue;
+            font-weight: 100;
+            font-style: italic;
+            text-align: center;
+            margin: 0px 0px 0px 0px;
+        }
+        .button > i {
+            font-size: 1em;
+            border-radius: 0px;
+            border: 0px solid transparent;
+            border-width: 0px 0px 0px 0px;
+            padding: 0px 0px 0px 5px;
+            margin: 0px 0px 0px 0px;
+            position: static;
+        }
+        .button > .ld {
+            font-size: initial;
+        }
+        .button a {
+            color: inherit;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/green">
+        <div class="button">
+            Click Here for Green Travel Optimization System
+            <div>Click Here!</div>
+        </div>
+        </a>
+        <br><br>
+        <a href="/temp">
+        <div class="button">
+            Click Here for Viewing Temperature of the World
+            <div>Click Here!</div>
+        </div>
+        </a>
+    </div>
+</body>
+</html>

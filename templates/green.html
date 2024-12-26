@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Travel Optimization</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/static/script.js"></script>
+
+    <script>
+        function handlePreferencesChange() {
+            const preferences = document.getElementById('preferences').value;
+            const transportMode = document.getElementById('transport-mode');
+            
+            if (preferences === 'eco') {
+                transportMode.disabled = true;
+                transportMode.value = 'walking'; 
+            } else {
+                transportMode.disabled = false;
+                transportMode.value = '';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const preferencesDropdown = document.getElementById('preferences');
+            preferencesDropdown.addEventListener('change', handlePreferencesChange);
+        });
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Green Travel Optimization System</h1>
+        <form id="travel-form">
+            <label for="start">Start Location:</label>
+            <input type="text" id="start" name="start" placeholder="Enter start location" required>
+            
+            <label for="destination">Destination:</label>
+            <input type="text" id="destination" name="destination" placeholder="Enter destination" required>
+            
+            <label for="preferences">Preferences:</label>
+            <select id="preferences" name="preferences" required>
+                <option value="" disabled selected>None</option>
+                <option value="eco">Most Eco-Friendly</option>
+                <option value="cust">Custom</option>
+            </select>
+
+            <label for="transport-mode">Transport Mode:</label>
+            <select id="transport-mode" name="transport-mode" required>
+                <option value="" disabled selected>None</option>
+                <option value="walking">Walking</option>
+                <option value="cycling">Cycling</option>
+                <option value="bus">Bus</option>
+                <option value="driving">Driving</option>
+            </select>
+
+            <button type="submit">Find Route</button><br>
+            <span id="Loading" class="loading-spinner" style="display: none;"></span>
+        </form>
+        <div id="info">
+        <div id="results">
+            <h2>Route Information</h2>
+                <div id="route-details"></div>
+                <div id="canvas-container">
+                    <canvas id="emissions-chart"></canvas>
+                </div>
+        </div>
+        <div id="map-container" style="display: none; height: 500px; margin-top: 20px;">
+            <div id="map" style="height: 100%;"></div>
+        </div>  
+        </div>      
+    </div>
+</body>
+</html>

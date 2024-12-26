@@ -1,0 +1,96 @@
+﻿<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Map by Year</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('/static/bg.jpg');
+            background-size: cover; 
+            background-repeat: no-repeat; 
+            background-position: center;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+        #image-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 70px;
+        }
+        #map-image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .slider-container {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            text-align: center;
+        }
+        .slider {
+            width: 500px;
+            height: 20px;
+        }
+        #title {
+            font-size: 25px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function updateImage(year) {
+                $('#map-image').attr('src', 'static/images/image' + year + '.png');
+                $('#slider-year-display').text(year);
+            }
+
+            $('#year-slider').on('input', function () {
+                const year = $(this).val();
+                updateImage(year);
+            });
+            updateImage(2000);
+        });
+    </script>
+</head>
+<body>
+
+    <div id='image-container'>
+        <img id='map-image' src='images/image2000.png' alt='World Map for Year 2000'>
+    </div>
+
+    <div class="slider-container">
+        <input type="range" id="year-slider" class="slider" min="2000" max="2100" step="10" value="2000">
+        <div id="slider-year-display">2000</div>
+    </div>
+
+    <nav class='navbar navbar-default navbar-fixed-top'>
+        <div class='container-fluid'>
+            <div class='navbar-header'>
+                <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#navbar' aria-expanded='false'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <div id='title'>Temperature of the World</div>
+            </div>
+        </div>
+    </nav>
+
+</body>
+</html>
